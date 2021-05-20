@@ -54,8 +54,9 @@ namespace capaNegocio
         {
             iniciarSP("guardarDieta");
             parametroVarchar(nombre, "nom", 30);
-            parametroDecimal(monto, "mont");
-            parametroInt(id_cliente, "id_cli");
+            parametroFecha(fechaInicio, "fechaInicio");
+            parametroFecha(fechaFinal, "fechaFinal");
+            parametroInt(idCliente, "idCliente");
             if (ejecutarSP() == true) { return true; } else { return false; }
         }
     }
