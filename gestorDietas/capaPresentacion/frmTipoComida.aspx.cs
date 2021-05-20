@@ -47,7 +47,7 @@ namespace capaPresentacion
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             TipoComida tcom = new TipoComida();
-            tcom.id_TipoComida = Convert.ToInt32(txtIdTipoComida.Text);
+            tcom.Id_TipoComida = Convert.ToInt32(txtIdTipoComida.Text);
             tcom.Nombre = txtNombre.Text;
             if (tcom.modificar()) { txtResp.Text = "Registro Modificado"; }
             else { txtResp.Text = "Error al Modificar"; }
@@ -56,7 +56,7 @@ namespace capaPresentacion
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             TipoComida tcom = new TipoComida();
-            tcom.id_TipoComida = Convert.ToInt32(txtIdTipoComida.Text);
+            tcom.Id_TipoComida = Convert.ToInt32(txtIdTipoComida.Text);
             if (tcom.eliminar()) { txtResp.Text = "Registro Eliminado"; }
             else { txtResp.Text = "Error al Eliminar"; }
         }

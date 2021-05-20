@@ -48,7 +48,7 @@ namespace capaPresentacion
             Comida com = new Comida();
 
             com.Descripcion = txtDescripcion.Text;
-            com.id_TipoComida = Convert.ToInt32(dd1.SelectedValue.ToString());
+            com.Id_TipoComida = Convert.ToInt32(dd1.SelectedValue.ToString());
             if (com.guardar()) { txtResp.Text = "Registro Guardado"; }
             else { txtResp.Text = "Error al Registrar"; }
         }
@@ -56,9 +56,9 @@ namespace capaPresentacion
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             Comida com = new Comida();
-            com.id_Comida = Convert.ToInt32(txtIdComida.Text);
+            com.Id_Comida = Convert.ToInt32(txtIdComida.Text);
             com.Descripcion = txtDescripcion.Text;
-            com.id_TipoComida = Convert.ToInt32(dd1.SelectedValue.ToString());
+            com.Id_TipoComida = Convert.ToInt32(dd1.SelectedValue.ToString());
             if (com.modificar()) { txtResp.Text = "Registro Modificado"; }
             else { txtResp.Text = "Error al Modificar"; }
             this.mostrar();
@@ -67,7 +67,7 @@ namespace capaPresentacion
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             Comida com = new Comida();
-            com.id_Comida = Convert.ToInt32(txtIdComida.Text);
+            com.Id_Comida = Convert.ToInt32(txtIdComida.Text);
             if (com.eliminar()) { txtResp.Text = "Registro eliminado..!"; } else { txtResp.Text = "Error al eliminar; "; }
             this.mostrar();
         }
