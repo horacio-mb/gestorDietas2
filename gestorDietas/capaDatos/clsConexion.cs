@@ -35,12 +35,56 @@ namespace capaDatos
             cnx.Close();
         }
 
-        public void PrepararSP(String sp)
+        public void iniciarSP(String sp)
         {
             //procedimiento almacenado
             cmdSP.Connection = conectar();
             cmdSP.CommandType = CommandType.StoredProcedure;
             cmdSP.CommandText = sp;
+        }
+        public void parametroInt(int valor, string param)
+        {
+            MySqlParameter Par = new MySqlParameter();
+            Par.ParameterName = param;
+            Par.MySqlDbType = MySqlDbType.Int32;
+            Par.Value = valor;
+            cmdSP.Parameters.Add(Par);
+        }
+
+        public void parametroDecimal(decimal valor, string param)
+        {
+            MySqlParameter Par = new MySqlParameter();
+            Par.ParameterName = param;
+            Par.MySqlDbType = MySqlDbType.Decimal;
+            Par.Value = valor;
+            cmdSP.Parameters.Add(Par);
+        }
+
+        public void parametroVarchar(string valor, string param, int dimension)
+        {
+            MySqlParameter Par = new MySqlParameter();
+            Par.ParameterName = param;
+            Par.MySqlDbType = MySqlDbType.VarChar;
+            Par.Size = dimension;
+            Par.Value = valor;
+            cmdSP.Parameters.Add(Par);
+        }
+        public void parametroFecha(DateTime valor, string param)
+        {
+            MySqlParameter Par = new MySqlParameter();
+            Par.ParameterName = param;
+            Par.MySqlDbType = MySqlDbType.DateTime;
+            Par.Value = valor;
+            cmdSP.Parameters.Add(Par);
+        }
+
+        public DataTable mostrarData()
+        {
+            DataTable DtResultado = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(this.cmdSP);
+            da.Fill(DtResultado);
+            this.desconectar();
+            return DtResultado;
         }
 
         public void AddParametro(String param, String valor)
