@@ -106,7 +106,7 @@
                      <br />
                  </div>
                  <div id="main" class="main">
-                    <asp:TextBox ID="txtBuscarC" runat="server"></asp:TextBox>&nbsp;
+                    <asp:TextBox ID="txtBuscarC" runat="server" OnTextChanged="txtBuscarC_TextChanged"></asp:TextBox>&nbsp;
                     <asp:Button ID="btnBuscarCli" runat="server" Text="Buscar por Nombre" OnClick="btnBuscarC"/>
                     <br />
                     <br />
