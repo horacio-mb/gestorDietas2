@@ -49,5 +49,11 @@ namespace capaNegocio
             parametroInt(idDieta, "id_d");
             if (ejecutarSP() == true) { return true; } else { return false; }
         }
+        public DataTable buscar(int idDieta)
+        {
+            iniciarSP("buscarDetalleVenta");
+            parametroInt(idDieta, "id_d");
+            return mostrarData();
+        }
     }
 }
