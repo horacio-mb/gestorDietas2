@@ -100,5 +100,12 @@ namespace capaDatos
             this.desconectar();
             return DtResultado;
         }
+        public void ejecutarSQL(String s, String nTable, DataSet ds)
+        {
+            MySqlDataAdapter MysqlAdapter;
+            MysqlAdapter = new MySqlDataAdapter(s, conectar());
+            MysqlAdapter.Fill(ds, nTable);
+            desconectar();
+        }
     }
 }

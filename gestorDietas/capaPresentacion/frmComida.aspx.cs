@@ -82,7 +82,7 @@ namespace capaPresentacion
 
             txtIdComida.Text = gvRegis.SelectedRow.Cells[0].Text;
             txtDescripcion.Text = gvRegis.SelectedRow.Cells[1].Text;
-            dd1.SelectedIndex = dd1.Items.IndexOf(dd1.Items.FindByText(gvRegis.SelectedRow.Cells[4].Text));
+            dd1.SelectedIndex = dd1.Items.IndexOf(dd1.Items.FindByText(gvRegis.SelectedRow.Cells[1].Text));
 
         }
 
