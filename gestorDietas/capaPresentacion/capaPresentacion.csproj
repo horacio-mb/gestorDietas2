@@ -87,7 +87,9 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="frmCliente.aspx" />
+    <Content Include="frmComida.aspx" />
     <Content Include="frmDieta.aspx" />
+    <Content Include="frmTipoComida.aspx" />
     <Content Include="frmUsuario.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -105,12 +107,26 @@
     <Compile Include="frmCliente.aspx.designer.cs">
       <DependentUpon>frmCliente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmComida.aspx.cs">
+      <DependentUpon>frmComida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmComida.aspx.designer.cs">
+      <DependentUpon>frmComida.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmDieta.aspx.cs">
       <DependentUpon>frmDieta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="frmDieta.aspx.designer.cs">
       <DependentUpon>frmDieta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmTipoComida.aspx.cs">
+      <DependentUpon>frmTipoComida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmTipoComida.aspx.designer.cs">
+      <DependentUpon>frmTipoComida.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmUsuario.aspx.cs">
       <DependentUpon>frmUsuario.aspx</DependentUpon>

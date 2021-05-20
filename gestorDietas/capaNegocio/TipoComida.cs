@@ -36,7 +36,7 @@ namespace capaNegocio
         public bool guardar()
         {
             iniciarSP("guardarTipoComida");
-            parametroVarchar(Nombre, "buscar", 40);
+            parametroVarchar(Nombre, "nom", 40);
             if (ejecutarSP() == true) { return true; }
             else { return false; }
         }

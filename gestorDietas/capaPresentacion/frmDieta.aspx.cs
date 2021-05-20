@@ -190,5 +190,74 @@ namespace capaPresentacion
         {
 
         }
+
+        protected void btnBuscarC(object sender, EventArgs e)
+        {
+            selectCliente();
+            miModalC.Show();
+        }
+
+        protected void btnCerrarCli(object sender, EventArgs e)
+        {
+            miModalC.Hide();
+        }
+
+        protected void gvCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtIdCliente.Text = gvCliente.SelectedRow.Cells[0].Text;
+            txtCliente.Text = gvCliente.SelectedRow.Cells[1].Text + ' ' + gvCliente.SelectedRow.Cells[2].Text;
+        }
+
+        protected void btnBuscarCom(object sender, EventArgs e)
+        {
+            selectComida();
+            miModalCo.Show();
+        }
+
+        protected void btnCerrarPro(object sender, EventArgs e)
+        {
+            miModalCo.Hide();
+        }
+
+        protected void gvComida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string idComida = gvComida.SelectedRow.Cells[0].Text;
+            string descripcion = gvComida.SelectedRow.Cells[1].Text;
+            string distribucion = gvComida.SelectedRow.Cells[2].Text;
+            AgregarItem(idComida, descripcion, distribucion);
+            miModalCo.Show();
+        }
+
+        protected void btnBuscarV(object sender, EventArgs e)
+        {
+            selectDieta();
+            miModalD.Show();
+        }
+
+        protected void gvDieta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtIdDieta.Text = gvDieta.SelectedRow.Cells[0].Text;
+            txtNomDieta.Text = gvDieta.SelectedRow.Cells[1].Text;
+            DateTime dt1 = Convert.ToDateTime(gvDieta.SelectedRow.Cells[2].Text);
+            DateTime dt2 = Convert.ToDateTime(gvDieta.SelectedRow.Cells[3].Text);
+            txtFechaInicio.Text = String.Format("{0:yyyy-MM-dd}", dt1);
+            txtFechaFinal.Text = String.Format("{0:yyyy-MM-dd}", dt2);
+            txtCliente.Text = gvDieta.SelectedRow.Cells[4].Text;
+            Dieta diet = new Dieta();
+            txtIdCliente.Text = diet.buscarClienteDieta(Convert.ToInt32(txtIdDieta.Text));
+
+            DietaComida det = new DietaComida();
+            DataTable detalle = new DataTable();
+            detalle = det.buscar(Convert.ToInt32(txtIdDieta.Text));
+            gvDetalle.DataSource = detalle;
+            gvDetalle.DataBind();
+            Session["prueba"] = detalle;
+    
+        }
+
+        protected void btnCerrarDieta(object sender, EventArgs e)
+        {
+            miModalD.Hide();
+        }
     }
 }
