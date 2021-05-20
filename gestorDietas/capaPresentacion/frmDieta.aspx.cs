@@ -75,25 +75,58 @@ namespace capaPresentacion
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             Dieta diet = new Dieta();
+            diet.Nombre= txtNomDieta.Text;
+            diet.FechaInicio= Convert.ToDateTime(txtFechaInicio.Text);
+            diet.FechaInicio = Convert.ToDateTime(txtFechaFinal.Text);
+            diet.IdCliente = Convert.ToInt32(txtIdCliente.Text);
+            diet.IdUsuario = Convert.ToInt32(txtUsuario.Text);
+            if (diet.guardar()) { lblResp.Text = "Dieta Registrada..!"; } else { lblResp.Text = "Error al Registrar"; }
 
-            diet.Fecha = Convert.ToDateTime(txtFechaVenta.Text);
-            
-            vent.Idcliente = Convert.ToInt32(txtIdCliente.Text);
-            if (vent.guardar()) { lblResp.Text = "Venta Registrada..!"; } else { lblResp.Text = "Error al Registrar"; }
-
-            DetalleVenta dv;
+            DietaComida dc;
             foreach (GridViewRow row in gvDetalle.Rows)
             {
-                dv = new DetalleVenta();
-                dv.Idproducto = Convert.ToInt32(row.Cells[1].Text);
-                dv.Preciov = Convert.ToDecimal(row.Cells[5].Text);
-                dv.Cantidad = Convert.ToInt32(((TextBox)row.Cells[4].FindControl("txtCantidad")).Text);
-                dv.guardar();
+                dc = new DietaComida();
+                dc.IdComida = Convert.ToInt32(row.Cells[1].Text);
+                dc.Distribucion = row.Cells[2].Text;
+                dc.guardar();
             }
+        }
 
-            wsDieta.wsDieta obj = new wsDieta.wsDieta();
-            obj.guardarDieta(txtNomDieta.Text, txtFechaInicio.Text, txtFechaFinal.Text, txtIdCliente.Text, txtIdUsuario.Text);
-            limpiar();
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+
+            Dieta diet = new Dieta();
+            diet.IdDieta = Convert.ToInt32(txtIdDieta.Text);
+            diet.Nombre = txtNomDieta.Text;
+            diet.FechaInicio = Convert.ToDateTime(txtFechaInicio.Text);
+            diet.FechaInicio = Convert.ToDateTime(txtFechaFinal.Text);
+            diet.IdCliente = Convert.ToInt32(txtIdCliente.Text);
+            diet.IdUsuario = Convert.ToInt32(txtUsuario.Text);
+            if (diet.guardar()) { lblResp.Text = "Dieta Registrada..!"; } else { lblResp.Text = "Error al Registrar"; }
+
+            DietaComida dc1 = new DietaComida();
+            dc1.IdDieta = Convert.ToInt32(txtIdDieta.Text);
+            dc1.eliminar();
+
+            DietaComida dc;
+            foreach (GridViewRow row in gvDetalle.Rows)
+            {
+                dc = new DietaComida();
+                dc.IdComida = Convert.ToInt32(row.Cells[1].Text);
+                dc.Distribucion = row.Cells[2].Text;
+                dc.guardar();
+            }
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DietaComida dc1 = new DietaComida();
+            dc1.IdDieta = Convert.ToInt32(txtIdDieta.Text);
+            dc1.eliminar();
+
+            Dieta diet = new Dieta();
+            diet.IdDieta = Convert.ToInt32(txtIdDieta.Text);
+            if (diet.eliminar()) { lblResp.Text = "Dieta Eliminada..!"; } else { lblResp.Text = "Error al Eliminar"; }
         }
     }
 }

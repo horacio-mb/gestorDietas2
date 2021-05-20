@@ -31,6 +31,11 @@ namespace capaNegocio
             get { return this.idDieta; }
             set { this.idDieta = value; }
         }
+        public string Nombre
+        {
+            get { return this.nombre; }
+            set { this.nombre = value; }
+        }
         public DateTime FechaInicio
         {
             get { return this.fechaInicio; }
