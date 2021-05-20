@@ -38,7 +38,7 @@ namespace capaNegocio
         }
         public bool guardar()
         {
-            iniciarSP("guardarDetalleVenta");
+            iniciarSP("guardarDietaComida");
             parametroInt(idComida, "id_co");
             parametroVarchar(distribucion, "dis", 30);
             if (ejecutarSP() == true) { return true; } else { return false; }
