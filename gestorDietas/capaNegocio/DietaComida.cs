@@ -51,7 +51,7 @@ namespace capaNegocio
         }
         public DataTable buscar(int idDieta)
         {
-            iniciarSP("buscarDetalleVenta");
+            iniciarSP("buscarDietaComida");
             parametroInt(idDieta, "id_d");
             return mostrarData();
         }

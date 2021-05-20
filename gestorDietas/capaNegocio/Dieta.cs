@@ -92,7 +92,7 @@ namespace capaNegocio
         public string buscarClienteDieta(int Id_Dieta)
         {
             iniciarSP("buscarClienteDieta");
-            parametroInt(IdDieta, "IdDieta");
+            parametroInt(IdDieta, "id_d");
             DataTable cod = new DataTable();
             cod = mostrarData();
             string id = "";
