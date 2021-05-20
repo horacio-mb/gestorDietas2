@@ -13,13 +13,13 @@ namespace consultasDietas
         {
 
         }
-
+        /*
         protected void btnBuscarU_Click(object sender, EventArgs e)
         {
             wsDieta.wsDieta obj = new wsDieta.wsDieta();
             gvdUsuario.DataSource = obj.buscarDietaPorUsuario(txtBuscarU.Text);
             gvdUsuario.DataBind();
-        }
+        }*/
 
         protected void btnBuscarC_Click(object sender, EventArgs e)
         {

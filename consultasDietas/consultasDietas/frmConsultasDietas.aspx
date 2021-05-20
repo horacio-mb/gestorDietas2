@@ -13,6 +13,7 @@
         <h3>Consultas</h3>
         <div>
             <div>
+                <%--No funca 
                 <h4>Buscar Dietas por Usuario</h4>
                 <div>Usuario<br />
                     <asp:TextBox ID="txtBuscarU" runat="server"></asp:TextBox>
@@ -20,13 +21,15 @@
                     <asp:GridView ID="gvdUsuario" runat="server">
                     </asp:GridView>
                 </div>
+                --%>
                 <h4>Buscar Dietas por Cliente</h4>
-                <div>Usuario<br />
+                <div>Cliente<br />
                     <asp:TextBox ID="txtBuscarC" runat="server"></asp:TextBox>
                     <asp:Button ID="btnBuscarC" runat="server" Text="Buscar Cliente" OnClick="btnBuscarC_Click" />
                     <asp:GridView ID="gvdBuscarC" runat="server">
                     </asp:GridView>
                 </div>
+                    
                 <h4>Buscar Dietas por Rango de Fecha</h4>
                 <div>
                     <asp:Label ID="Label1" runat="server" Text="Fecha Inicial"></asp:Label>
