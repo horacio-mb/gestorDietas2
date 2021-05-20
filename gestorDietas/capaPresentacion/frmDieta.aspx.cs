@@ -94,7 +94,7 @@ namespace capaPresentacion
             diet.FechaInicio= Convert.ToDateTime(txtFechaInicio.Text);
             diet.FechaInicio = Convert.ToDateTime(txtFechaFinal.Text);
             diet.IdCliente = Convert.ToInt32(txtIdCliente.Text);
-            diet.IdUsuario = Convert.ToInt32(txtUsuario.Text);
+            diet.IdUsuario = Convert.ToInt32(txtIdUsuario.Text);
             if (diet.guardar()) { lblResp.Text = "Dieta Registrada..!"; } else { lblResp.Text = "Error al Registrar"; }
 
             DietaComida dc;
@@ -161,6 +161,7 @@ namespace capaPresentacion
                 if (detalleObj == null)
                 {
                     detalleObj = new DataTable("Carrito");
+                    detalleObj.Columns.Add("idComida", System.Type.GetType("System.String"));
                     detalleObj.Columns.Add("descripcion", System.Type.GetType("System.String"));
                     detalleObj.Columns.Add("distribucion", System.Type.GetType("System.String"));
                     
@@ -169,9 +170,10 @@ namespace capaPresentacion
                 if (es != id)
                 {
                     DataRow fila = detalleObj.NewRow();
-                    fila[0] = Convert.ToInt32(row["descripcion"].ToString());
-                    fila[1] = Convert.ToString(row["distribucion"].ToString());
-                     detalleObj.Rows.Add(fila);
+                    fila[0] = Convert.ToInt32(row["idComida"].ToString());
+                    fila[1] = Convert.ToString(row["descripcion"].ToString());
+                    fila[2] = Convert.ToString(row["distribucion"].ToString());
+                    detalleObj.Rows.Add(fila);
                 }
             }
             Session["pedido"] = detalleObj;

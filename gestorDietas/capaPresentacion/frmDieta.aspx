@@ -78,6 +78,7 @@
                     <asp:GridView ID="gvDetalle" Width="500px" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="gvDetalle_SelectedIndexChanged">
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" HeaderText="Opcion" SelectText="Quitar"/>
+                            <asp:BoundField DataField="idComida" ItemStyle-Width="150" HeaderText="Id"/>
                             <asp:BoundField DataField="descripcion" ItemStyle-Width="150" HeaderText="Comida"/>
                             <asp:BoundField DataField="distribucion" HeaderText="Distribucion"/>
                         </Columns>
