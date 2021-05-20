@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace capaNegocio
+ namespace capaNegocio
 {
-    class Cliente : clsConexion
+    public class Cliente : clsConexion
     {
         private int id;
         private string nombre;

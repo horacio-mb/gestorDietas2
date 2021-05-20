@@ -8,7 +8,7 @@ using capaDatos;
 
 namespace capaNegocio
 {
-    class Comida : clsConexion
+    public class Comida : clsConexion
     {
         private int idComida;
         private string descripcion;

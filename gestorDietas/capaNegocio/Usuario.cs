@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace capaNegocio
 {
-    class Usuario
+    public class Usuario
     {
     }
 }
