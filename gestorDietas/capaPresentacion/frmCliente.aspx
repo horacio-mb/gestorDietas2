@@ -60,7 +60,7 @@
         <div>
             <label>Listado de Clientes</label><br />
             <asp:TextBox ID="txtBuscar" runat="server"></asp:TextBox>&nbsp;
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar por Nombre" />
+            <asp:Button ID="btnBuscar" runat="server" Text="Buscar por Nombre" OnClick="btnBuscar_Click1" />
             <br />
             <br />
             <asp:GridView ID="gvRegis" runat="server" AutoGenerateColumns="false" OnPageIndexChanged="gvRegis_SelectedIndexChanged" OnSelectedIndexChanged="gvRegis_SelectedIndexChanged">

@@ -25,10 +25,10 @@
 </head>
 <body>
     <center>
-        <a href="#">Comida</a>&nbsp;
-        <a href="#">Tipo Comida</a>&nbsp;
+        <a href="frmTipoComida.aspx">TipoComida</a>&nbsp;
+        <a href="frmComida.aspx">Comida</a>&nbsp;
         <a href="frmCliente.aspx">Cliente</a>&nbsp;
-        <a href="#">Usuario</a>&nbsp;
+	<a href="frmUsuario.aspx">Usuario</a>&nbsp;
         <a href="frmDieta.aspx">Dieta</a>&nbsp;
         <h3>REGISTRO DE DIETAS</h3>
     <form id="form1" runat="server">

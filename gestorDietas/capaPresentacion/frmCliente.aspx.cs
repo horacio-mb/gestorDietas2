@@ -93,5 +93,10 @@ namespace capaPresentacion
             if (client.eliminar()) { txtResp.Text = "Registro Eliminado..!"; } else { txtResp.Text = "Error al Eliminar"; }
             this.mostrar();
         }
+
+        protected void btnBuscar_Click1(object sender, EventArgs e)
+        {
+            this.mostrar();
+        }
     }
 }
