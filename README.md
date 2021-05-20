@@ -1,2 +1,2 @@
 # gestorDietas2
-2doInteto
+2do Intento
