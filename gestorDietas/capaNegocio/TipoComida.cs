@@ -21,7 +21,7 @@ namespace capaNegocio
 
         }
 
-        public int id_TipoComida
+        public int Id_TipoComida
         {
             get { return this.idTipoComida; }
             set { this.idTipoComida = value; }

@@ -116,7 +116,7 @@
                             <asp:BoundField DataField="nombre" HeaderText="Nombre"/>
                             <asp:BoundField DataField="apellido_paterno" HeaderText="Paterno"/>
                             <asp:BoundField DataField="apellido_materno" HeaderText="Materno"/>
-                            <asp:BoundField DataField="fecha_nacimiento" HeaderText="FechNac"/>
+                            <asp:BoundField DataField="fecha" HeaderText="FechNac"/>
                             <asp:BoundField DataField="correo" HeaderText="Email"/>
                             <asp:BoundField DataField="telefono" HeaderText="Telefono"/>
                             <asp:BoundField DataField="sexo" HeaderText="Sexo"/>
