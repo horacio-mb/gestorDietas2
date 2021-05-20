@@ -35,6 +35,8 @@ materno varchar(30),
 cargo varchar (30)
 );
 
+
+
 create table dieta(
 idDieta int auto_increment primary key,
 nombre varchar(40),
@@ -42,8 +44,8 @@ fechaInicio date,
 fechaFinal date,
 idCliente int,
 idUsuario int,
-foreign key(idCliente) references cliente(idCliente),
-foreign key(idUsuario) references usuario(idUsuario));
+foreign key(idCliente) references cliente(idCliente)
+);
 
 create table dieta_comida(
 idDieta int not null,
@@ -107,7 +109,7 @@ in mat varchar(30),
 in car varchar(30)
 )
 begin
-	insert into usuario (usuario, correo, contrasena, nombre, paterno, materno, cargo) values(id, usu, cor, con, nom, pat, mat, car);
+	insert into usuario (usuario, correo, contrasena, nombre, paterno, materno, cargo) values(usu, cor, con, nom, pat, mat, car);
 end $
 
 delimiter $
@@ -122,7 +124,7 @@ in mat varchar(30),
 in car varchar(30)
 )
 begin
-	update usuario set usuario=usu,correo=cor,contraseña=con,nombre=nom,paterno=pat,materno=mat,cargo=car  where idUsuario=id;
+	update usuario set usuario=usu,correo=cor,contrasena=con,nombre=nom,paterno=pat,materno=mat,cargo=car  where idUsuario=id;
 end $
 
 delimiter $
@@ -134,8 +136,9 @@ end $
 delimiter $
 create procedure buscarUsuario(in buscar varchar(30))
 begin
-    select idUsuario, usuario, correo, contraseña, nombre, paterno, materno, cargo from usuario where usuario.cargo like concat('%',buscar,'%');
+    select idUsuario, usuario, correo, contrasena, nombre, paterno, materno, cargo from usuario where usuario.cargo like concat('%',buscar,'%');
 end $
+
 
 delimiter $
 create procedure guardarTipoComida(
@@ -286,3 +289,12 @@ begin
 end $
 
 
+select *from comida;
+
+
+delimiter $
+create procedure buscarComida2(in buscar varchar(40))
+begin
+select idComida, descripcion, idTipoComida from comida
+where descripcion like concat('%',buscar,'%');
+end $
