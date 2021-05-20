@@ -196,11 +196,12 @@ namespace capaPresentacion
         }
         protected void selectComida()
         {
-            Comida prod = new Comida();
-            prod.Descripcion = txtBuscarCom.Text;
-            gvComida.DataSource = prod.buscar();
+            Comida com = new Comida();
+            com.Descripcion = txtBuscarCom.Text;
+            gvComida.DataSource = com.buscar2();
             gvComida.DataBind();
         }
+      
         protected void selectDieta()
         {
             Dieta prod = new Dieta();

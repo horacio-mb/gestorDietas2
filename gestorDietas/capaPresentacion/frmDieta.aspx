@@ -189,9 +189,9 @@
                     <br />
                     <asp:GridView ID="gvComida" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="gvComida_SelectedIndexChanged">
                         <Columns>
-                            <asp:BoundField DataField="idComida" HeaderText="Id"/>
-                            <asp:BoundField DataField="descripcion" HeaderText="Descripcion"/>
-                            <asp:BoundField DataField="idTipoComida" HeaderText="Tipo Comida"/>
+                            <asp:BoundField DataField="idComida" HeaderText="idComida"/>
+                            <asp:BoundField DataField="descripcion" HeaderText="descripcion"/>
+                            <asp:BoundField DataField="idTipoComida" HeaderText="idTipoComida"/>
                             <asp:CommandField ShowSelectButton="True" HeaderText="Opcion" SelectText="Seleccionar"/>
                         </Columns>
                     </asp:GridView>

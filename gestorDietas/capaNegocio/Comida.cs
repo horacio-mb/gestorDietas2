@@ -21,7 +21,7 @@ namespace capaNegocio
             idTipoComida = 0;
         }
 
-        public int id_Comida
+        public int Id_Comida
         {
             get { return this.idComida; }
             set { this.idComida = value; }
@@ -34,7 +34,7 @@ namespace capaNegocio
 
         }
 
-        public int id_TipoComida
+        public int Id_TipoComida
         {
             get { return this.idTipoComida; }
             set { this.idTipoComida = value; }
@@ -70,6 +70,12 @@ namespace capaNegocio
         public DataTable buscar()
         {
             iniciarSP("buscarComida");
+            parametroVarchar(descripcion, "buscar", 40);
+            return mostrarData();
+        }
+        public DataTable buscar2()
+        {
+            iniciarSP("buscarComida2");
             parametroVarchar(descripcion, "buscar", 40);
             return mostrarData();
         }
