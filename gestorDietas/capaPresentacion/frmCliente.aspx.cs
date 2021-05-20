@@ -61,6 +61,7 @@ namespace capaPresentacion
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             Cliente client = new Cliente();
+            client.Id = Convert.ToInt32(txtIdCliente.Text);
             client.Nombre = txtNombre.Text;
             client.Paterno = txtPaterno.Text;
             client.Materno = txtMaterno.Text;

@@ -8,6 +8,11 @@
     <title>frmPersona</title>
 </head>
 <body>
+    <a href="frmTipoComida.aspx">TipoComida</a>&nbsp;
+        <a href="frmComida.aspx">Comida</a>&nbsp;
+        <a href="frmCliente.aspx">Cliente</a>&nbsp;
+	<a href="frmUsuario.aspx">Usuario</a>&nbsp;
+        <a href="frmDieta.aspx">Dieta</a>&nbsp;
     <h3>REGISTRO DE CLIENTES</h3>
     <form id="form1" runat="server">
         <div>
@@ -65,11 +70,11 @@
             <br />
             <asp:GridView ID="gvRegis" runat="server" AutoGenerateColumns="false" OnPageIndexChanged="gvRegis_SelectedIndexChanged" OnSelectedIndexChanged="gvRegis_SelectedIndexChanged">
                 <Columns>
-                    <asp:BoundField DataField="id" HeaderText="ID"/>
+                    <asp:BoundField DataField="idCliente" HeaderText="ID"/>
                     <asp:BoundField DataField="nombre" HeaderText="Nombre"/>
-                    <asp:BoundField DataField="paterno" HeaderText="Ape. Paterno"/>
-                    <asp:BoundField DataField="materno" HeaderText="Ape. Materno"/>
-                    <asp:BoundField DataField="fecha_nacimiento" DataFormatString="{0:d}" HeaderText="Fecha Nacimiento"/>
+                    <asp:BoundField DataField="apellido_paterno" HeaderText="Ape. Paterno"/>
+                    <asp:BoundField DataField="apellido_materno" HeaderText="Ape. Materno"/>
+                    <asp:BoundField DataField="fecha" DataFormatString="{0:d}" HeaderText="Fecha Nacimiento"/>
                     <asp:BoundField DataField="correo" HeaderText="Correo"/>
                     <asp:BoundField DataField="telefono" HeaderText="Telefono"/>
                     <asp:BoundField DataField="sexo" HeaderText="Sexo"/>

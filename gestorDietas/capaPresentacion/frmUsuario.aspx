@@ -8,6 +8,11 @@
     <title></title>
 </head>
 <body>
+    <a href="frmTipoComida.aspx">TipoComida</a>&nbsp;
+        <a href="frmComida.aspx">Comida</a>&nbsp;
+        <a href="frmCliente.aspx">Cliente</a>&nbsp;
+	<a href="frmUsuario.aspx">Usuario</a>&nbsp;
+        <a href="frmDieta.aspx">Dieta</a>&nbsp;
     <form id="form1" runat="server">
         <div>
          <h3>REGISTRO DE USUARIOS</h3>
