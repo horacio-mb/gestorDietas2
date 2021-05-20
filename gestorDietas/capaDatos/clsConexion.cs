@@ -16,7 +16,7 @@ namespace capaDatos
         private String basedatos;
         private MySqlCommand cmd;
 
-        public clsConexion(
+        public clsConexion()
         {
             this.servidor = "localhost";
             this.usuario = "root";
