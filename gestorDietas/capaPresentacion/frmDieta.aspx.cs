@@ -52,6 +52,21 @@ namespace capaPresentacion
             gvDetalle.DataSource = Session["pedido"];
             gvDetalle.DataBind();
         }
+        protected void buscarCliente(object sender, EventArgs e)
+        {
+            miModalC.Show(); //inicia el modal Cliente
+            gvCliente.DataBind(); //deja limpio la tabla de registros
+        }
+        protected void buscarUsuario(object sender, EventArgs e)
+        {
+            miModalU.Show(); //inicia el modal Cliente
+            gvUsuario.DataBind(); //deja limpio la tabla de registros
+        }
+        protected void buscarComida(object sender, EventArgs e)
+        {
+            miModalCo.Show(); //inicia el modal Cliente
+            gvComida.DataBind(); //deja limpio la tabla de registros
+        }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -172,6 +187,13 @@ namespace capaPresentacion
             gvCliente.DataSource = cli.buscar();
             gvCliente.DataBind();
         }
+        protected void selectUsuario()
+        {
+            Usuario cli = new Usuario();
+            cli.Nombre = txtBuscarU.Text;
+            gvUsuario.DataSource = cli.buscar();
+            gvUsuario.DataBind();
+        }
         protected void selectComida()
         {
             Comida prod = new Comida();
@@ -258,6 +280,23 @@ namespace capaPresentacion
         protected void btnCerrarDieta(object sender, EventArgs e)
         {
             miModalD.Hide();
+        }
+
+        protected void btnBuscarU(object sender, EventArgs e)
+        {
+            selectUsuario();
+            miModalU.Show();
+        }
+
+        protected void btnCerrarUsu(object sender, EventArgs e)
+        {
+            miModalU.Hide();
+        }
+
+        protected void gvUsuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtIdUsuario.Text = gvCliente.SelectedRow.Cells[0].Text;
+            txtUsuario.Text = gvCliente.SelectedRow.Cells[1].Text;
         }
     }
 }

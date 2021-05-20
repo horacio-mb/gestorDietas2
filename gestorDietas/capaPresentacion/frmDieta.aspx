@@ -133,8 +133,46 @@
             </div>
             <%--Fin modal buscar cliente--%>
 
+            <%--Inicio modal buscar usuario--%>
+            <asp:Label ID="lblUsuario" runat="server" Text=""></asp:Label>
+            <ajaxToolkit:ModalPopupExtender ID="miModalU" runat="server" TargetControlID="lblCliente" PopupControlID="modalUsuario" 
+                BackgroundCssClass="modalBackground"></ajaxToolkit:ModalPopupExtender>
+            <div id="modalUsuario" class="modalPopup">
+                 <div id="Header4" class="header" >
+                     Busqueda de Usuarios
+                     <br />
+                     <br />
+                 </div>
+                 <div id="main4" class="main">
+                    <asp:TextBox ID="txtBuscarU" runat="server" OnTextChanged="txtBuscarC_TextChanged"></asp:TextBox>&nbsp;
+                    <asp:Button ID="btnBuscarUsu" runat="server" Text="Buscar por Nombre" OnClick="btnBuscarU"/>
+                    <br />
+                    <br />
+                    <asp:GridView ID="gvUsuario" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="gvUsuario_SelectedIndexChanged">
+                        <Columns>
+                            <asp:BoundField DataField="idUsuario" HeaderText="Id"/>
+                            <asp:BoundField DataField="usuario" HeaderText="Usuario"/>
+                            <asp:BoundField DataField="correo" HeaderText="Correo"/>
+                            <asp:BoundField DataField="nombre" HeaderText="Nombre"/>
+                            <asp:BoundField DataField="paterno" HeaderText="Paterno"/>
+                            <asp:BoundField DataField="materno" HeaderText="Materno"/>
+                            <asp:BoundField DataField="cargo" HeaderText="Cargo"/>
+                            
+                            <asp:CommandField ShowSelectButton="True" HeaderText="Opcion" SelectText="Seleccionar"/>
+                        </Columns>
+                    </asp:GridView>
+
+                 </div>
+                 <div>
+                     <br />
+                      <asp:Button id="btnCerrarU" runat="server" text="Cerrar" OnClick="btnCerrarUsu" />
+                 </div>
+            </div>
+            <%--Fin modal buscar usuario--%>
+
+
              <%--Inicio modal buscar Comida--%>
-             <asp:Label ID="lblProducto" runat="server" Text=""></asp:Label>
+             <asp:Label ID="lblComida" runat="server" Text=""></asp:Label>
             <ajaxToolkit:ModalPopupExtender ID="miModalCo" runat="server" TargetControlID="lblComida" PopupControlID="modalComida" 
                 BackgroundCssClass="modalBackground"></ajaxToolkit:ModalPopupExtender>
             <div id="modalComida" class="modalPopup">
