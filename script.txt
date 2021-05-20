@@ -1,0 +1,288 @@
+create database bdgestordietas;
+use bdgestordietas;
+
+create table cliente(
+idCliente int AUTO_INCREMENT primary key,
+nombre varchar(30),
+apellido_paterno varchar(30),
+apellido_materno varchar(30),
+fecha_nacimiento date,
+correo varchar(30),
+telefono varchar(10),
+sexo char(1)
+);
+
+create table tipo_comida(
+idTipoComida int auto_increment primary key,
+nombre varchar(40)
+);
+
+create table comida(
+idComida int auto_increment primary key,
+descripcion varchar(150),
+idTipoComida int not null,
+foreign key(idTipoComida) references tipo_comida(idTipoComida)
+);
+
+create table usuario(
+idUsuario int auto_increment primary key,
+usuario varchar(30),
+correo varchar(30),
+contrasena varchar(150),
+nombre varchar(30),
+paterno varchar(30),
+materno varchar(30),
+cargo varchar (30)
+);
+
+create table dieta(
+idDieta int auto_increment primary key,
+nombre varchar(40),
+fechaInicio date,
+fechaFinal date,
+idCliente int,
+idUsuario int,
+foreign key(idCliente) references cliente(idCliente),
+foreign key(idUsuario) references usuario(idUsuario));
+
+create table dieta_comida(
+idDieta int not null,
+idComida int not null,
+distribucion varchar(30),
+primary key(idDieta,idComida),
+foreign key(idDieta) references dieta(idDieta),
+foreign key(idComida) references comida(idComida)
+);
+delimiter $
+create procedure guardarCliente(
+ in nom varchar(30), 
+in pat varchar(30),
+in mat varchar(30),
+in fec date,
+in cor varchar(30),
+in tel varchar(30),
+in sex char(1)
+)
+begin
+	insert into cliente (nombre,apellido_paterno,apellido_materno,fecha_nacimiento,correo,telefono,sexo) values(nom, pat, mat, fec, cor, tel, sex);
+end $
+
+delimiter $
+create procedure modificarCliente(
+in id int,
+in nom varchar(30), 
+in pat varchar(30),
+in mat varchar(30),
+in fec date,
+in cor varchar(30),
+in tel varchar(30),
+in sex char(1)
+)
+begin
+	update cliente set nombre=nom,apellido_paterno=pat,apellido_materno=mat,fecha_nacimiento=fec,correo=cor,telefono=tel,sexo=sex  where idCliente=id;
+end $
+
+delimiter $
+create procedure eliminarCliente(in id int)
+begin
+	delete from cliente where idCliente = id;
+end $
+
+delimiter $
+create procedure buscarCliente(in buscar varchar(30))
+begin
+    select idCliente, nombre, apellido_paterno, apellido_materno, date_format(fecha_nacimiento, '%Y-%m-%d') as fecha, correo, telefono, sexo from cliente where cliente.nombre like concat('%',buscar,'%');
+end $
+
+
+
+delimiter $
+create procedure guardarUsuario(
+in usu varchar(30), 
+in cor varchar(30),
+in con varchar(150),
+in nom varchar(30),
+in pat varchar(30),
+in mat varchar(30),
+in car varchar(30)
+)
+begin
+	insert into usuario (usuario, correo, contrasena, nombre, paterno, materno, cargo) values(id, usu, cor, con, nom, pat, mat, car);
+end $
+
+delimiter $
+create procedure modificarUsuario(
+in id int,
+in usu varchar(30), 
+in cor varchar(30),
+in con varchar(150),
+in nom varchar(30),
+in pat varchar(30),
+in mat varchar(30),
+in car varchar(30)
+)
+begin
+	update usuario set usuario=usu,correo=cor,contraseña=con,nombre=nom,paterno=pat,materno=mat,cargo=car  where idUsuario=id;
+end $
+
+delimiter $
+create procedure eliminarUsuario(in id int)
+begin
+	delete from usuario where idUsuario = id;
+end $
+
+delimiter $
+create procedure buscarUsuario(in buscar varchar(30))
+begin
+    select idUsuario, usuario, correo, contraseña, nombre, paterno, materno, cargo from usuario where usuario.cargo like concat('%',buscar,'%');
+end $
+
+delimiter $
+create procedure guardarTipoComida(
+in nom varchar(40)
+)
+begin
+	insert into tipo_comida ( nombre) values(nom);
+end $
+
+delimiter $
+create procedure buscarTipoComida(in buscar varchar(40))
+begin	
+	select *from tipo_comida where nombre like concat('%',buscar,'%');
+end $
+
+delimiter $
+create procedure listarTipoComida(
+)
+begin
+	select *from tipo_comida;
+end $
+
+delimiter $
+create procedure modificarTipoComida(
+in id_tc int,
+in nom varchar (40)
+)
+begin 
+update tipo_comida set nombre=nom
+where idTipoComida=id_tc;
+end $
+
+delimiter $
+create procedure eliminarTipoComida (
+in id_tc int
+)
+begin
+delete from tipo_comida where idTipoComida=id_tc;
+
+end $
+
+delimiter $
+create procedure guardarComida(
+in des varchar(40),
+in id_tc int
+)
+begin
+	insert into comida (descripcion, idTipoComida) values( des, id_tc);
+end $
+
+delimiter $
+create procedure modificarComida(
+in id_com int,
+in des varchar(40),
+in id_tc int 
+)
+begin
+	update comida set descripcion=des, idTipoComida=id_tc
+	where idComida=id_com;
+end $
+
+delimiter $
+create procedure eliminarComida(in id_com int)
+begin
+delete from comida where idComida=id_com;
+end $
+
+delimiter $
+create procedure buscarComida(in buscar varchar(40))
+begin
+select idComida, descripcion, tipo_comida.nombre
+from tipo_comida inner join comida on tipo_comida.idTipoComida = comida.idTipoComida
+where descripcion like concat('%',buscar,'%');
+end $
+
+
+
+DELIMITER $
+CREATE PROCEDURE guardarDieta(
+	in nom varchar (30),
+    in fechaI date,
+    in fechaF date,
+    in idCli int,
+    in idUs int)
+begin
+    insert into dieta(nombre, fechaInicio, fechaFinal, idCliente, idUsuario) values(nom, fechaI, fechaF,idCli,idUs);
+end $
+
+CREATE PROCEDURE modificarDieta(
+    in id_d int,
+    in nom varchar (30),
+    in fechaI date,
+    in fechaF date,
+    in idCli int,
+    in idUs int)
+begin
+	update dieta set nombre=nom, fechaInicio=fechaI, fechaFinal=fechaF, idCliente=idCli,idUsuario=idUs
+    where IdDieta=id_d;
+end $
+
+DELIMITER $
+CREATE PROCEDURE eliminarDieta(in id_d int)
+begin
+    delete from dieta 
+    where idDieta=id_d;
+end $
+
+DELIMITER $
+CREATE PROCEDURE buscarDieta(in buscar varchar(30))
+begin
+	
+	select d.idDieta, d.nombre,d.fechaInicio,d.fechaFinal, d.idUsuario, concat_ws(' ',c.nombre, c.apellido_paterno) as cliente
+    from dieta d inner join cliente c on c.idCliente=d.idCliente
+    where concat_ws(' ',c.nombre, c.apellido_paterno) like concat('%',buscar,'%');
+end $
+
+DELIMITER $
+CREATE PROCEDURE buscarClienteDieta(in id_d int)
+begin
+    select d.idCliente from dieta d
+    where d.idDieta= id_d;
+end $
+
+DELIMITER $
+CREATE PROCEDURE guardarDietaComida(
+	in id_co int, 
+	in dis varchar(30)
+    )
+begin
+ 	declare id_d int;
+    set id_d=(select MAX(dieta.idDieta) from dieta);
+    insert into dieta_comida values(id_d, id_co, dis);
+end $
+
+DELIMITER $
+CREATE PROCEDURE eliminarDietaComida(in id_d int)
+begin
+    delete from dieta_comida 
+    where dieta_comida.idDieta=id_d;
+end $
+
+DELIMITER $
+CREATE PROCEDURE buscarDietaComida(in id_d int)
+begin
+	select dc.idComida, c.descripcion, dc.distribucion
+    from dieta_comida dc inner join comida c on dc.idComida = c.idComida
+    where dc.idDieta = id_d;
+end $
+
+
