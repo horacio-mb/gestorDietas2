@@ -12,13 +12,13 @@ namespace capaNegocio
     {
         private int idDieta;
         private int idComida;
-        private string distribucion;
+        private int porcion;
 
         public DietaComida()
         {
             idDieta = 0;
             idComida = 0;
-            distribucion = "";
+            porcion = 0;
         }
         public int IdDieta
         {
@@ -31,16 +31,16 @@ namespace capaNegocio
             set { this.idComida = value; }
         }
 
-        public string Distribucion
+        public int Porcion
         {
-            get { return this.distribucion; }
-            set { this.distribucion = value; }
+            get { return this.porcion; }
+            set { this.porcion = value; }
         }
         public bool guardar()
         {
             iniciarSP("guardarDietaComida");
             parametroInt(idComida, "id_co");
-            parametroVarchar(distribucion, "dis", 30);
+            parametroInt(porcion, "dis");
             if (ejecutarSP() == true) { return true; } else { return false; }
         }
         public bool eliminar()

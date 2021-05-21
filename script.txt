@@ -44,7 +44,8 @@ fechaInicio date,
 fechaFinal date,
 idCliente int,
 idUsuario int,
-foreign key(idCliente) references cliente(idCliente)
+foreign key(idCliente) references cliente(idCliente),
+foreign key(idUsuario) references usuario(idUsuario)
 );
 
 create table dieta_comida(
@@ -250,8 +251,8 @@ DELIMITER $
 CREATE PROCEDURE buscarDieta(in buscar varchar(30))
 begin
 	
-	select d.idDieta, d.nombre,d.fechaInicio,d.fechaFinal, d.idUsuario, concat_ws(' ',c.nombre, c.apellido_paterno) as cliente
-    from dieta d inner join cliente c on c.idCliente=d.idCliente
+	select d.idDieta, d.nombre,d.fechaInicio,d.fechaFinal, d.idUsuario, concat_ws(' ',c.nombre, c.apellido_paterno) as cliente, concat_ws(' ',u.nombre, u.paterno) as usuario
+    from dieta d inner join cliente c on c.idCliente=d.idCliente join usuario u on u.idUsuario=d.idUsuario
     where concat_ws(' ',c.nombre, c.apellido_paterno) like concat('%',buscar,'%');
 end $
 
@@ -280,7 +281,7 @@ begin
     where dieta_comida.idDieta=id_d;
 end $
 
-DELIMITER $
+delimiter $
 CREATE PROCEDURE buscarDietaComida(in id_d int)
 begin
 	select dc.idComida, c.descripcion, dc.distribucion
@@ -289,7 +290,7 @@ begin
 end $
 
 
-select *from comida;
+select *from dieta;
 
 
 delimiter $
@@ -298,3 +299,7 @@ begin
 select idComida, descripcion, idTipoComida from comida
 where descripcion like concat('%',buscar,'%');
 end $
+
+
+
+drop procedure buscarComida2

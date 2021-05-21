@@ -80,7 +80,11 @@
                             <asp:CommandField ShowSelectButton="True" HeaderText="Opcion" SelectText="Quitar"/>
                             <asp:BoundField DataField="idComida" ItemStyle-Width="150" HeaderText="Id"/>
                             <asp:BoundField DataField="descripcion" ItemStyle-Width="150" HeaderText="Comida"/>
-                            <asp:BoundField DataField="distribucion" HeaderText="Distribucion"/>
+                            <asp:TemplateField HeaderText="Porcion" ItemStyle-Width="50">
+                                <ItemTemplate>
+                                    <asp:TextBox ID="txtDistribucion" Width="90px" runat="server">1</asp:TextBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -227,6 +231,7 @@
                             <asp:BoundField DataField="fechaInicio" DataFormatString="{0:d}" HeaderText="fechaInicio"/>
                             <asp:BoundField DataField="fechaFinal" DataFormatString="{0:d}" HeaderText="fechaFinal"/>
                             <asp:BoundField DataField="cliente" HeaderText="Cliente"/>
+                            <asp:BoundField DataField="usuario" HeaderText="Usuario"/>
                             <asp:CommandField ShowSelectButton="True" HeaderText="Opcion" SelectText="Seleccionar"/>
                         </Columns>
                     </asp:GridView>

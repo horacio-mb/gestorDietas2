@@ -102,7 +102,7 @@ namespace capaPresentacion
             {
                 dc = new DietaComida();
                 dc.IdComida = Convert.ToInt32(row.Cells[1].Text);
-                dc.Distribucion = row.Cells[2].Text;
+                dc.Porcion = Convert.ToInt32(((TextBox)row.Cells[3].FindControl("txtDistribucion")).Text);
                 dc.guardar();
             }
         }
@@ -128,7 +128,7 @@ namespace capaPresentacion
             {
                 dc = new DietaComida();
                 dc.IdComida = Convert.ToInt32(row.Cells[1].Text);
-                dc.Distribucion = row.Cells[2].Text;
+                dc.Porcion = Convert.ToInt32(row.Cells[2].Text);
                 dc.guardar();
             }
         }
@@ -268,6 +268,7 @@ namespace capaPresentacion
             txtFechaInicio.Text = String.Format("{0:yyyy-MM-dd}", dt1);
             txtFechaFinal.Text = String.Format("{0:yyyy-MM-dd}", dt2);
             txtCliente.Text = gvDieta.SelectedRow.Cells[4].Text;
+            txtUsuario.Text = gvDieta.SelectedRow.Cells[5].Text;
             Dieta diet = new Dieta();
             txtIdCliente.Text = diet.buscarClienteDieta(Convert.ToInt32(txtIdDieta.Text));
 
