@@ -24,7 +24,7 @@ namespace consultasDietas
         protected void btnBuscarC_Click(object sender, EventArgs e)
         {
             wsDieta.wsDieta obj = new wsDieta.wsDieta();
-            gvdBuscarC.DataSource = obj.buscarDietaPorCliente(txtBuscarC.Text);
+            gvdBuscarC.DataSource = obj.mostrarDietasPorCliente(txtBuscarC.Text);
             gvdBuscarC.DataBind();
         }
 
@@ -33,6 +33,40 @@ namespace consultasDietas
             wsDieta.wsDieta obj = new wsDieta.wsDieta();
             gvdFecha.DataSource = obj.buscarDietaPorRangoFecha(txtFecha1.Text, txtFecha2.Text);
             gvdFecha.DataBind();
+        }
+
+        protected void btnDetalleCliente_Click(object sender, EventArgs e)
+        {
+            wsDieta.wsDieta obj = new wsDieta.wsDieta();
+            gvdDetalleClienteDieta.DataSource = obj.mostrarDetallePorCliente(txtCliente.Text);
+            gvdDetalleClienteDieta.DataBind();
+        }
+
+        protected void btnNomDieta_Click(object sender, EventArgs e)
+        {
+            wsDieta.wsDieta obj = new wsDieta.wsDieta();
+            gvDetalleDieta.DataSource = obj.mostrarDetallePorDieta(txtNomDieta.Text);
+            gvDetalleDieta.DataBind();
+        }
+
+        protected void btnSexo1_Click(object sender, EventArgs e)
+        {
+            wsDieta.wsDieta obj = new wsDieta.wsDieta();
+            string sexo;
+            if (rb1.Checked == true) { sexo = "M"; }
+            else { sexo = "F"; }
+            gvSexo1.DataSource = obj.mostrarClientePorSexo(sexo);
+            gvSexo1.DataBind();
+        }
+
+        protected void btnSexo2_Click(object sender, EventArgs e)
+        {
+            wsDieta.wsDieta obj = new wsDieta.wsDieta();
+            string sexo;
+            if (rb3.Checked == true) { sexo = "M"; }
+            else { sexo = "F"; }
+            gvSexo2.DataSource = obj.contarClientePorSexo(sexo);
+            gvSexo2.DataBind();
         }
     }
 }

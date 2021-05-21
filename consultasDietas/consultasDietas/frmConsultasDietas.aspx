@@ -40,6 +40,44 @@
                     <asp:GridView ID="gvdFecha" runat="server">
                     </asp:GridView>
                 </div>
+
+                <h4> Mostrar Detalle por Cliente</h4>
+                <div>Cliente<br />
+                    <asp:TextBox ID="txtCliente" runat="server"></asp:TextBox>
+                    <asp:Button ID="btnDetalleCliente" runat="server" Text="Detalle por Cliente" OnClick="btnDetalleCliente_Click" />
+                    <asp:GridView ID="gvdDetalleClienteDieta" runat="server">
+                    </asp:GridView>
+                </div>
+
+                <h4> Mostrar Detalle por Dieta</h4>
+                <div>Nombre Dieta<br />
+                    <asp:TextBox ID="txtNomDieta" runat="server"></asp:TextBox>
+                    <asp:Button ID="btnNomDieta" runat="server" Text="Detalle por Dieta" OnClick="btnNomDieta_Click" />
+                    <asp:GridView ID="gvDetalleDieta" runat="server">
+                    </asp:GridView>
+                </div>
+
+                <h4> Mostrar Clientes por Sexo</h4>
+                <div>---<br />
+                    
+                    <asp:RadioButton ID="rb1" runat="server" GroupName="rbt" Checked="false"/> Masculino
+                    <asp:RadioButton ID="rb2" runat="server" GroupName="rbt" /> Femenino
+                    <asp:Button ID="btnSexo1" runat="server" Text="Mostrar por Sexo" OnClick="btnSexo1_Click"/>
+                    <asp:GridView ID="gvSexo1" runat="server">
+                    </asp:GridView>
+                </div>
+
+                <h4> Contar Clientes por Sexo</h4>
+                <div>---<br />
+                    
+                    <asp:RadioButton ID="rb3" runat="server" GroupName="rb" Checked="false"/> Masculino
+                    <asp:RadioButton ID="rb4" runat="server" GroupName="rb" /> Femenino
+                    <asp:Button ID="btnSexo2" runat="server" Text="Contar por Sexo" OnClick="btnSexo2_Click"/>
+                    <asp:GridView ID="gvSexo2" runat="server"/>
+                    <br />
+                    
+                </div>
+
             </div>
         </div>
     </form>
