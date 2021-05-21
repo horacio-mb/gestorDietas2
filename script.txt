@@ -48,10 +48,11 @@ foreign key(idCliente) references cliente(idCliente),
 foreign key(idUsuario) references usuario(idUsuario)
 );
 
+
 create table dieta_comida(
 idDieta int not null,
 idComida int not null,
-distribucion varchar(30),
+porcion int,
 primary key(idDieta,idComida),
 foreign key(idDieta) references dieta(idDieta),
 foreign key(idComida) references comida(idComida)
@@ -266,7 +267,7 @@ end $
 DELIMITER $
 CREATE PROCEDURE guardarDietaComida(
 	in id_co int, 
-	in dis varchar(30)
+	in dis int
     )
 begin
  	declare id_d int;
@@ -284,7 +285,7 @@ end $
 delimiter $
 CREATE PROCEDURE buscarDietaComida(in id_d int)
 begin
-	select dc.idComida, c.descripcion, dc.distribucion
+	select dc.idComida, c.descripcion, dc.porcion
     from dieta_comida dc inner join comida c on dc.idComida = c.idComida
     where dc.idDieta = id_d;
 end $
@@ -300,6 +301,3 @@ select idComida, descripcion, idTipoComida from comida
 where descripcion like concat('%',buscar,'%');
 end $
 
-
-
-drop procedure buscarComida2
