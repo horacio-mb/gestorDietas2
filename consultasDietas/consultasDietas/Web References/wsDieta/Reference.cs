@@ -30,11 +30,19 @@ namespace consultasDietas.wsDieta {
     [System.Web.Services.WebServiceBindingAttribute(Name="wsDietaSoap", Namespace="http://tempuri.org/")]
     public partial class wsDieta : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback buscarDietaPorUsuarioOperationCompleted;
-        
         private System.Threading.SendOrPostCallback buscarDietaPorClienteOperationCompleted;
         
         private System.Threading.SendOrPostCallback buscarDietaPorRangoFechaOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback mostrarDietasPorClienteOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback mostrarDetallePorDietaOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback mostrarDetallePorClienteOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback contarClientePorSexoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback mostrarClientePorSexoOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -75,42 +83,25 @@ namespace consultasDietas.wsDieta {
         }
         
         /// <remarks/>
-        public event buscarDietaPorUsuarioCompletedEventHandler buscarDietaPorUsuarioCompleted;
-        
-        /// <remarks/>
         public event buscarDietaPorClienteCompletedEventHandler buscarDietaPorClienteCompleted;
         
         /// <remarks/>
         public event buscarDietaPorRangoFechaCompletedEventHandler buscarDietaPorRangoFechaCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/buscarDietaPorUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet buscarDietaPorUsuario(string usuario) {
-            object[] results = this.Invoke("buscarDietaPorUsuario", new object[] {
-                        usuario});
-            return ((System.Data.DataSet)(results[0]));
-        }
+        public event mostrarDietasPorClienteCompletedEventHandler mostrarDietasPorClienteCompleted;
         
         /// <remarks/>
-        public void buscarDietaPorUsuarioAsync(string usuario) {
-            this.buscarDietaPorUsuarioAsync(usuario, null);
-        }
+        public event mostrarDetallePorDietaCompletedEventHandler mostrarDetallePorDietaCompleted;
         
         /// <remarks/>
-        public void buscarDietaPorUsuarioAsync(string usuario, object userState) {
-            if ((this.buscarDietaPorUsuarioOperationCompleted == null)) {
-                this.buscarDietaPorUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnbuscarDietaPorUsuarioOperationCompleted);
-            }
-            this.InvokeAsync("buscarDietaPorUsuario", new object[] {
-                        usuario}, this.buscarDietaPorUsuarioOperationCompleted, userState);
-        }
+        public event mostrarDetallePorClienteCompletedEventHandler mostrarDetallePorClienteCompleted;
         
-        private void OnbuscarDietaPorUsuarioOperationCompleted(object arg) {
-            if ((this.buscarDietaPorUsuarioCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.buscarDietaPorUsuarioCompleted(this, new buscarDietaPorUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
+        /// <remarks/>
+        public event contarClientePorSexoCompletedEventHandler contarClientePorSexoCompleted;
+        
+        /// <remarks/>
+        public event mostrarClientePorSexoCompletedEventHandler mostrarClientePorSexoCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/buscarDietaPorCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -173,6 +164,151 @@ namespace consultasDietas.wsDieta {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/mostrarDietasPorCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet mostrarDietasPorCliente(string client) {
+            object[] results = this.Invoke("mostrarDietasPorCliente", new object[] {
+                        client});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void mostrarDietasPorClienteAsync(string client) {
+            this.mostrarDietasPorClienteAsync(client, null);
+        }
+        
+        /// <remarks/>
+        public void mostrarDietasPorClienteAsync(string client, object userState) {
+            if ((this.mostrarDietasPorClienteOperationCompleted == null)) {
+                this.mostrarDietasPorClienteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmostrarDietasPorClienteOperationCompleted);
+            }
+            this.InvokeAsync("mostrarDietasPorCliente", new object[] {
+                        client}, this.mostrarDietasPorClienteOperationCompleted, userState);
+        }
+        
+        private void OnmostrarDietasPorClienteOperationCompleted(object arg) {
+            if ((this.mostrarDietasPorClienteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.mostrarDietasPorClienteCompleted(this, new mostrarDietasPorClienteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/mostrarDetallePorDieta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet mostrarDetallePorDieta(string diet) {
+            object[] results = this.Invoke("mostrarDetallePorDieta", new object[] {
+                        diet});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void mostrarDetallePorDietaAsync(string diet) {
+            this.mostrarDetallePorDietaAsync(diet, null);
+        }
+        
+        /// <remarks/>
+        public void mostrarDetallePorDietaAsync(string diet, object userState) {
+            if ((this.mostrarDetallePorDietaOperationCompleted == null)) {
+                this.mostrarDetallePorDietaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmostrarDetallePorDietaOperationCompleted);
+            }
+            this.InvokeAsync("mostrarDetallePorDieta", new object[] {
+                        diet}, this.mostrarDetallePorDietaOperationCompleted, userState);
+        }
+        
+        private void OnmostrarDetallePorDietaOperationCompleted(object arg) {
+            if ((this.mostrarDetallePorDietaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.mostrarDetallePorDietaCompleted(this, new mostrarDetallePorDietaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/mostrarDetallePorCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet mostrarDetallePorCliente(string client) {
+            object[] results = this.Invoke("mostrarDetallePorCliente", new object[] {
+                        client});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void mostrarDetallePorClienteAsync(string client) {
+            this.mostrarDetallePorClienteAsync(client, null);
+        }
+        
+        /// <remarks/>
+        public void mostrarDetallePorClienteAsync(string client, object userState) {
+            if ((this.mostrarDetallePorClienteOperationCompleted == null)) {
+                this.mostrarDetallePorClienteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmostrarDetallePorClienteOperationCompleted);
+            }
+            this.InvokeAsync("mostrarDetallePorCliente", new object[] {
+                        client}, this.mostrarDetallePorClienteOperationCompleted, userState);
+        }
+        
+        private void OnmostrarDetallePorClienteOperationCompleted(object arg) {
+            if ((this.mostrarDetallePorClienteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.mostrarDetallePorClienteCompleted(this, new mostrarDetallePorClienteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/contarClientePorSexo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet contarClientePorSexo(string sex) {
+            object[] results = this.Invoke("contarClientePorSexo", new object[] {
+                        sex});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void contarClientePorSexoAsync(string sex) {
+            this.contarClientePorSexoAsync(sex, null);
+        }
+        
+        /// <remarks/>
+        public void contarClientePorSexoAsync(string sex, object userState) {
+            if ((this.contarClientePorSexoOperationCompleted == null)) {
+                this.contarClientePorSexoOperationCompleted = new System.Threading.SendOrPostCallback(this.OncontarClientePorSexoOperationCompleted);
+            }
+            this.InvokeAsync("contarClientePorSexo", new object[] {
+                        sex}, this.contarClientePorSexoOperationCompleted, userState);
+        }
+        
+        private void OncontarClientePorSexoOperationCompleted(object arg) {
+            if ((this.contarClientePorSexoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.contarClientePorSexoCompleted(this, new contarClientePorSexoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/mostrarClientePorSexo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet mostrarClientePorSexo(string sex) {
+            object[] results = this.Invoke("mostrarClientePorSexo", new object[] {
+                        sex});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void mostrarClientePorSexoAsync(string sex) {
+            this.mostrarClientePorSexoAsync(sex, null);
+        }
+        
+        /// <remarks/>
+        public void mostrarClientePorSexoAsync(string sex, object userState) {
+            if ((this.mostrarClientePorSexoOperationCompleted == null)) {
+                this.mostrarClientePorSexoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmostrarClientePorSexoOperationCompleted);
+            }
+            this.InvokeAsync("mostrarClientePorSexo", new object[] {
+                        sex}, this.mostrarClientePorSexoOperationCompleted, userState);
+        }
+        
+        private void OnmostrarClientePorSexoOperationCompleted(object arg) {
+            if ((this.mostrarClientePorSexoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.mostrarClientePorSexoCompleted(this, new mostrarClientePorSexoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -188,32 +324,6 @@ namespace consultasDietas.wsDieta {
                 return true;
             }
             return false;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void buscarDietaPorUsuarioCompletedEventHandler(object sender, buscarDietaPorUsuarioCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class buscarDietaPorUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal buscarDietaPorUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public System.Data.DataSet Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((System.Data.DataSet)(this.results[0]));
-            }
         }
     }
     
@@ -256,6 +366,136 @@ namespace consultasDietas.wsDieta {
         private object[] results;
         
         internal buscarDietaPorRangoFechaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void mostrarDietasPorClienteCompletedEventHandler(object sender, mostrarDietasPorClienteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class mostrarDietasPorClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal mostrarDietasPorClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void mostrarDetallePorDietaCompletedEventHandler(object sender, mostrarDetallePorDietaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class mostrarDetallePorDietaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal mostrarDetallePorDietaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void mostrarDetallePorClienteCompletedEventHandler(object sender, mostrarDetallePorClienteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class mostrarDetallePorClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal mostrarDetallePorClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void contarClientePorSexoCompletedEventHandler(object sender, contarClientePorSexoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class contarClientePorSexoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal contarClientePorSexoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void mostrarClientePorSexoCompletedEventHandler(object sender, mostrarClientePorSexoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class mostrarClientePorSexoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal mostrarClientePorSexoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

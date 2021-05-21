@@ -2,27 +2,6 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="buscarDietaPorUsuario">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="buscarDietaPorUsuarioResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="buscarDietaPorUsuarioResult">
-              <s:complexType>
-                <s:sequence>
-                  <s:element ref="s:schema" />
-                  <s:any />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="buscarDietaPorCliente">
         <s:complexType>
           <s:sequence>
@@ -66,14 +45,113 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="mostrarDietasPorCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="client" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mostrarDietasPorClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mostrarDietasPorClienteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mostrarDetallePorDieta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="diet" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mostrarDetallePorDietaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mostrarDetallePorDietaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mostrarDetallePorCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="client" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mostrarDetallePorClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mostrarDetallePorClienteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="contarClientePorSexo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sex" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="contarClientePorSexoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="contarClientePorSexoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mostrarClientePorSexo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sex" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mostrarClientePorSexoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mostrarClientePorSexoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="buscarDietaPorUsuarioSoapIn">
-    <wsdl:part name="parameters" element="tns:buscarDietaPorUsuario" />
-  </wsdl:message>
-  <wsdl:message name="buscarDietaPorUsuarioSoapOut">
-    <wsdl:part name="parameters" element="tns:buscarDietaPorUsuarioResponse" />
-  </wsdl:message>
   <wsdl:message name="buscarDietaPorClienteSoapIn">
     <wsdl:part name="parameters" element="tns:buscarDietaPorCliente" />
   </wsdl:message>
@@ -86,11 +164,37 @@
   <wsdl:message name="buscarDietaPorRangoFechaSoapOut">
     <wsdl:part name="parameters" element="tns:buscarDietaPorRangoFechaResponse" />
   </wsdl:message>
+  <wsdl:message name="mostrarDietasPorClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:mostrarDietasPorCliente" />
+  </wsdl:message>
+  <wsdl:message name="mostrarDietasPorClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:mostrarDietasPorClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="mostrarDetallePorDietaSoapIn">
+    <wsdl:part name="parameters" element="tns:mostrarDetallePorDieta" />
+  </wsdl:message>
+  <wsdl:message name="mostrarDetallePorDietaSoapOut">
+    <wsdl:part name="parameters" element="tns:mostrarDetallePorDietaResponse" />
+  </wsdl:message>
+  <wsdl:message name="mostrarDetallePorClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:mostrarDetallePorCliente" />
+  </wsdl:message>
+  <wsdl:message name="mostrarDetallePorClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:mostrarDetallePorClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="contarClientePorSexoSoapIn">
+    <wsdl:part name="parameters" element="tns:contarClientePorSexo" />
+  </wsdl:message>
+  <wsdl:message name="contarClientePorSexoSoapOut">
+    <wsdl:part name="parameters" element="tns:contarClientePorSexoResponse" />
+  </wsdl:message>
+  <wsdl:message name="mostrarClientePorSexoSoapIn">
+    <wsdl:part name="parameters" element="tns:mostrarClientePorSexo" />
+  </wsdl:message>
+  <wsdl:message name="mostrarClientePorSexoSoapOut">
+    <wsdl:part name="parameters" element="tns:mostrarClientePorSexoResponse" />
+  </wsdl:message>
   <wsdl:portType name="wsDietaSoap">
-    <wsdl:operation name="buscarDietaPorUsuario">
-      <wsdl:input message="tns:buscarDietaPorUsuarioSoapIn" />
-      <wsdl:output message="tns:buscarDietaPorUsuarioSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="buscarDietaPorCliente">
       <wsdl:input message="tns:buscarDietaPorClienteSoapIn" />
       <wsdl:output message="tns:buscarDietaPorClienteSoapOut" />
@@ -99,18 +203,29 @@
       <wsdl:input message="tns:buscarDietaPorRangoFechaSoapIn" />
       <wsdl:output message="tns:buscarDietaPorRangoFechaSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="mostrarDietasPorCliente">
+      <wsdl:input message="tns:mostrarDietasPorClienteSoapIn" />
+      <wsdl:output message="tns:mostrarDietasPorClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mostrarDetallePorDieta">
+      <wsdl:input message="tns:mostrarDetallePorDietaSoapIn" />
+      <wsdl:output message="tns:mostrarDetallePorDietaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mostrarDetallePorCliente">
+      <wsdl:input message="tns:mostrarDetallePorClienteSoapIn" />
+      <wsdl:output message="tns:mostrarDetallePorClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="contarClientePorSexo">
+      <wsdl:input message="tns:contarClientePorSexoSoapIn" />
+      <wsdl:output message="tns:contarClientePorSexoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mostrarClientePorSexo">
+      <wsdl:input message="tns:mostrarClientePorSexoSoapIn" />
+      <wsdl:output message="tns:mostrarClientePorSexoSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsDietaSoap" type="tns:wsDietaSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="buscarDietaPorUsuario">
-      <soap:operation soapAction="http://tempuri.org/buscarDietaPorUsuario" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="buscarDietaPorCliente">
       <soap:operation soapAction="http://tempuri.org/buscarDietaPorCliente" style="document" />
       <wsdl:input>
@@ -129,18 +244,54 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="mostrarDietasPorCliente">
+      <soap:operation soapAction="http://tempuri.org/mostrarDietasPorCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mostrarDetallePorDieta">
+      <soap:operation soapAction="http://tempuri.org/mostrarDetallePorDieta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mostrarDetallePorCliente">
+      <soap:operation soapAction="http://tempuri.org/mostrarDetallePorCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contarClientePorSexo">
+      <soap:operation soapAction="http://tempuri.org/contarClientePorSexo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mostrarClientePorSexo">
+      <soap:operation soapAction="http://tempuri.org/mostrarClientePorSexo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsDietaSoap12" type="tns:wsDietaSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="buscarDietaPorUsuario">
-      <soap12:operation soapAction="http://tempuri.org/buscarDietaPorUsuario" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="buscarDietaPorCliente">
       <soap12:operation soapAction="http://tempuri.org/buscarDietaPorCliente" style="document" />
       <wsdl:input>
@@ -152,6 +303,51 @@
     </wsdl:operation>
     <wsdl:operation name="buscarDietaPorRangoFecha">
       <soap12:operation soapAction="http://tempuri.org/buscarDietaPorRangoFecha" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mostrarDietasPorCliente">
+      <soap12:operation soapAction="http://tempuri.org/mostrarDietasPorCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mostrarDetallePorDieta">
+      <soap12:operation soapAction="http://tempuri.org/mostrarDetallePorDieta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mostrarDetallePorCliente">
+      <soap12:operation soapAction="http://tempuri.org/mostrarDetallePorCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contarClientePorSexo">
+      <soap12:operation soapAction="http://tempuri.org/contarClientePorSexo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mostrarClientePorSexo">
+      <soap12:operation soapAction="http://tempuri.org/mostrarClientePorSexo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
