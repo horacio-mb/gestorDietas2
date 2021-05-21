@@ -11,6 +11,7 @@ namespace webService
     /// <summary>
     /// Descripción breve de wsDieta
     /// </summary>
+    /// 
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
