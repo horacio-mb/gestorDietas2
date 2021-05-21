@@ -16,8 +16,8 @@
         .modalPopup{
             padding:20px 0px 24px 10px;
             position: relative;
-            width:550px;
-            height:300px;
+            width:650px;
+            height:500px;
             background-color:white;
             border: 1px solid black;
         }
@@ -192,7 +192,7 @@
                         <Columns>
                             <asp:BoundField DataField="idComida" HeaderText="idComida"/>
                             <asp:BoundField DataField="descripcion" HeaderText="descripcion"/>
-                            <asp:BoundField DataField="idTipoComida" HeaderText="idTipoComida"/>
+                            <asp:BoundField DataField="nombre" HeaderText="Tipo de Comida"/>
                             <asp:CommandField ShowSelectButton="True" HeaderText="Opcion" SelectText="Seleccionar"/>
                         </Columns>
                     </asp:GridView>

@@ -116,7 +116,7 @@ namespace capaPresentacion
             diet.FechaInicio = Convert.ToDateTime(txtFechaInicio.Text);
             diet.FechaInicio = Convert.ToDateTime(txtFechaFinal.Text);
             diet.IdCliente = Convert.ToInt32(txtIdCliente.Text);
-            diet.IdUsuario = Convert.ToInt32(txtUsuario.Text);
+            diet.IdUsuario = Convert.ToInt32(txtIdUsuario.Text);
             if (diet.guardar()) { lblResp.Text = "Dieta Registrada..!"; } else { lblResp.Text = "Error al Registrar"; }
 
             DietaComida dc1 = new DietaComida();
@@ -200,7 +200,7 @@ namespace capaPresentacion
         {
             Comida com = new Comida();
             com.Descripcion = txtBuscarCom.Text;
-            gvComida.DataSource = com.buscar2();
+            gvComida.DataSource = com.buscar();
             gvComida.DataBind();
         }
       
@@ -298,8 +298,8 @@ namespace capaPresentacion
 
         protected void gvUsuario_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtIdUsuario.Text = gvCliente.SelectedRow.Cells[0].Text;
-            txtUsuario.Text = gvCliente.SelectedRow.Cells[1].Text;
+            txtIdUsuario.Text = gvUsuario.SelectedRow.Cells[0].Text;
+            txtUsuario.Text = gvUsuario.SelectedRow.Cells[3].Text;
         }
     }
 }
